@@ -1,0 +1,140 @@
+{
+  "theme": "Light",
+  "archetype": "Swiss & High-Contrast (Awwwards Editorial Variant)",
+  "general_ui_ux_design_guidelines": [
+    "All interactive and key informational elements MUST include a data-testid attribute for automated testing.",
+    "Never use purely centered, symmetric generic layouts. Use off-canvas alignments and grid tension.",
+    "Whitespace is a first-class design element. Use massive paddings (p-16 to p-32) between sections.",
+    "Do not use complete transparent background in header, overlays, or any surface that has content under it."
+  ],
+  "typography": {
+    "heading": "Playfair Display",
+    "body": "Manrope",
+    "accent": "JetBrains Mono",
+    "rules": [
+      "Use Playfair Display for massive, impactful headlines. Mix regular and italic variants in the same sentence for editorial tension.",
+      "Use Manrope for all readable paragraph text. Keep tracking normal and leading relaxed.",
+      "Use JetBrains Mono purely for data labels, numbers, axis labels on charts, and supertitles (with tracking-[0.2em] and uppercase).",
+      "CRITICAL: Do not use Inter, Roboto, or Space Grotesk anywhere."
+    ]
+  },
+  "colors": {
+    "background": {
+      "primary": "#FFFFFF",
+      "secondary": "#F9F9F9",
+      "tertiary": "#F0F0F0"
+    },
+    "text": {
+      "ink": "#050505",
+      "muted": "#555555"
+    },
+    "accent": {
+      "primary": "#FF4F00",
+      "description": "International Orange. Use highly selectively as the 'Data Ink'. Only for chart highlights, active states, or key CTA buttons."
+    },
+    "structural": {
+      "border": "#E5E5E5"
+    }
+  },
+  "visual_enhancers": {
+    "textures": "Include a highly subtle, static SVG noise overlay over the entire application to remove digital flatness.",
+    "borders": "Use 1px sharp borders for structural elements and bento grids. No rounded corners (rounded-none).",
+    "shadows": "No soft drop shadows. If depth is needed, use hard 1px borders combined with a solid color offset shadow (Neo-brutalist hint but strictly corporate)."
+  },
+  "layouts": {
+    "grid": "Use a 12-column grid. Follow 'Mode A (Tetris)' for projects and 'Mode B (High Density)' for dashboard-like visualizations.",
+    "spacing": "Extremely generous. Sections should be separated by py-24 or py-32. Create tension by clustering content tightly in one grid area and leaving adjacent areas completely blank.",
+    "alignment": "Strictly left-aligned or grid-aligned text. Avoid center alignment for paragraphs or heavy text."
+  },
+  "motion": {
+    "scrolling": "Lenis smooth scrolling is MANDATORY for premium momentum.",
+    "reveals": "Framer Motion staggered text reveals (line-by-line using overflow-hidden and y-axis translation).",
+    "micro_interactions": "Hover states on projects should trigger subtle, slow image scaling (1.05x over 0.6s) without breaking the container."
+  },
+  "components": {
+    "hero": {
+      "layout": "Kinetic, highly asymmetric. Massive 'Playfair Display' typography.",
+      "animation": "Masked line-by-line headline reveal.",
+      "visual": "Integrate a subtle 3D moment or an abstract data visualization (using Framer Motion or Recharts) as a floating element that slightly reacts to scroll parallax."
+    },
+    "about": {
+      "features": "Numbered manifesto chapters (e.g., '01 / Strategy', '02 / Precision', '03 / Scale').",
+      "typography": "JetBrains Mono for the numbering, Playfair Display for the chapter titles."
+    },
+    "skills": {
+      "layout": "Bento Grid protocol (dense).",
+      "visual": "Do not just list skills. Create animated, dashboard-style data visuals (Recharts) portraying their proficiency. The charts are the design objects. Style them purely in black, white, and International Orange."
+    },
+    "projects": {
+      "layout": "Case studies presented as high-end editorial articles.",
+      "features": "Include embedded dashboard-style animated charts relevant to the project results.",
+      "hover": "Hovering the project card changes the cursor or displays a 'View Case Study' button following the mouse."
+    },
+    "experience": {
+      "layout": "Minimalist vertical timeline using absolute positioning and a 1px vertical line.",
+      "typography": "JetBrains Mono for the dates, aligned left. Role and Company in Manrope, aligned right."
+    },
+    "marquee": {
+      "features": "One extremely slow, organic editorial marquee separating key sections.",
+      "content": "e.g., 'DATA TO DECISIONS — PRECISION AT SCALE — ARCHITECTING INTELLIGENCE'",
+      "styling": "JetBrains Mono or Playfair Display, text-xs or text-7xl depending on scale choice, completely sharp and unblurred."
+    },
+    "contact": {
+      "functionality": "Working form saving to the backend database.",
+      "styling": "Corporate and raw. Use HTML standard inputs but styled with Tailwind: rounded-none, border-b-2, border-transparent, focus:border-ink. No standard bounding boxes for inputs."
+    }
+  },
+  "media": {
+    "image_urls": {
+      "abstract_data_hero": {
+        "url": "https://images.unsplash.com/photo-1707054437518-dfd402977b03?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwxfHxjbGVhbiUyMG1pbmltYWwlMjBkYXRhJTIwdmlzdWFsaXphdGlvbiUyMGNoYXJ0JTIwYWJzdHJhY3QlMjB3aGl0ZSUyMGJhY2tncm91bmR8ZW58MHx8fHwxNzg3MTA5NTE2fDA&ixlib=rb-4.1.0&q=85",
+        "category": "Hero/Background",
+        "description": "Minimal white abstract wavy lines representing fluid data."
+      },
+      "abstract_data_project": {
+        "url": "https://images.unsplash.com/photo-1752213355138-7d08b01d2d0e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwyfHxjbGVhbiUyMG1pbmltYWwlMjBkYXRhJTIwdmlzdWFsaXphdGlvbiUyMGNoYXJ0JTIwYWJzdHJhY3QlMjB3aGl0ZSUyMGJhY2tncm91bmR8ZW58MHx8fHwxNzg3MTA5NTE2fDA&ixlib=rb-4.1.0&q=85",
+        "category": "Projects",
+        "description": "Abstract white vertical bars resembling a bar chart."
+      },
+      "portfolio_portrait": {
+        "url": "https://images.unsplash.com/photo-1693464081656-c5b1368960d4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA3MDR8MHwxfHNlYXJjaHwzfHxwcm9mZXNzaW9uYWwlMjBwb3J0cmFpdCUyMG1hbiUyMGxvb2tpbmclMjBhd2F5JTIwbmF0dXJhbCUyMGxpZ2h0JTIwbWluaW1hbHxlbnwwfHx8fDE3ODcxMDk1MTZ8MA&ixlib=rb-4.1.0&q=85",
+        "category": "About",
+        "description": "Professional clean portrait looking away."
+      },
+      "office_workspace": {
+        "url": "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1OTV8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBjbGVhbiUyMG9mZmljZSUyMGRlc2slMjBhcmNoaXRlY3QlMjBzZXR1cHxlbnwwfHx8fDE3ODcxMDk1MTZ8MA&ixlib=rb-4.1.0&q=85",
+        "category": "Projects/Case Study Context",
+        "description": "Clean modern architectural desk setup."
+      }
+    }
+  },
+  "libraries": [
+    "framer-motion",
+    "lucide-react",
+    "recharts",
+    "@studio-freight/react-lenis",
+    "react-fast-marquee"
+  ],
+  "accessibility": [
+    "Ensure contrast ratios meet APCA standards for the #FF4F00 against white.",
+    "Wrap visual charts in semantic sections with aria-labels.",
+    "Respect prefers-reduced-motion for all framer-motion animations."
+  ],
+  "instructions_to_main_agent": [
+    "Implement the pages inside the React application using Tailwind CSS and the specified libraries.",
+    "Build the dashboard-style animated charts inside the Skills and Projects sections using Recharts. Apply custom styling so they look like high-end design objects, not default library widgets.",
+    "Ensure the hero uses staggered text reveal animations using framer-motion.",
+    "Wire up the contact form to save submissions to the FastAPI backend.",
+    "Load fonts appropriately in index.css using Google Fonts (@import url).",
+    "Do NOT use placeholder image URLs. Use the provided Unsplash URLs in the media section.",
+    "Ensure every single interactive element has a data-testid."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "You MUST NOT center align the app container in App.css.",
+    "Create depth through layout hierarchy, not just shadows. Use 1px borders heavily.",
+    "Every interaction needs micro-animations - hover states, transitions, entrance animations. Static = dead.",
+    "Never use generic AI assistant emoji characters (🤖🧠💡).",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
+    "Do not use dark colors as gradients. Keep surfaces solid or noise-textured."
+  ]
+}
