@@ -50,7 +50,7 @@ export const FadeUp = ({ children, delay = 0, className = "" }) => (
   </motion.div>
 );
 
-export const Counter = ({ to, prefix = "", suffix = "", className = "" }) => {
+export const Counter = ({ to, prefix = "", suffix = "", decimals = 0, className = "" }) => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
   const [val, setVal] = useState(0);
@@ -59,14 +59,14 @@ export const Counter = ({ to, prefix = "", suffix = "", className = "" }) => {
     const controls = animate(0, to, {
       duration: 1.8,
       ease: EASE,
-      onUpdate: (v) => setVal(Math.round(v)),
+      onUpdate: (v) => setVal(v),
     });
     return () => controls.stop();
   }, [inView, to]);
   return (
     <span ref={ref} className={className}>
       {prefix}
-      {val}
+      {val.toFixed(decimals)}
       {suffix}
     </span>
   );

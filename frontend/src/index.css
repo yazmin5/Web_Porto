@@ -14,7 +14,7 @@ body {
 }
 
 ::selection {
-    background: #FF4F00;
+    background: #1a73e8;
     color: #ffffff;
 }
 
@@ -49,7 +49,7 @@ html.lenis, html.lenis body {
         --secondary-foreground: 0 0% 2%;
         --muted: 0 0% 96.1%;
         --muted-foreground: 0 0% 33%;
-        --accent: 16 100% 50%;
+        --accent: 214 82% 51%;
         --accent-foreground: 0 0% 98%;
         --destructive: 0 84.2% 60.2%;
         --destructive-foreground: 0 0% 98%;

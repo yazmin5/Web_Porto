@@ -25,16 +25,37 @@
 - Contact: working form → POST /api/contact → MongoDB, sonner toast, form reset
 - Footer with back-to-top (Lenis)
 
-## Verified
-- curl POST /api/contact returns saved message with id + created_at
-- E2E: case study dialog opens/closes; contact form submits, toast shown, form resets
+## Implemented (2026-08-19, iteration 2 — real content)
+- Full rebrand to Yasmin Lukman (Jakarta) from her CV: summary, skills, Indosat + Beiersdorf experience, IPB education (M.Sc. 3.8/4, B.Sc.), thesis projects
+- Resume download: CV PDF at /Yasmin_Lukman_CV.pdf, buttons in nav + hero + mobile menu
+- Email alerts: Resend via Emergent managed proxy — contact form triggers notification to work.yasmin.lukman@gmail.com (guardrail-gated template, server-side only)
+- Playground section (id="playground"): 3 tabs —
+  1. Sales Excel dashboard rebuilt live: KPIs ($2.45M rev, 2,000 orders), region + channel filters, monthly area chart, category bars, channel/region donuts (real data pre-aggregated to src/data/dashboardData.json)
+  2. Infrastructure Finance dashboard: KPIs ($42.6M value, $2.1M savings), year filter, target vs actual bars, dept savings, status donut
+  3. Maven Bank Tableau Public embed (iframe) + external link
+- Case studies rewritten around her real work (sales dashboard, infra finance, Maven Bank Tableau link, PM2.5 thesis)
+
+## Verified (iteration 2)
+- curl POST /api/contact → saved + email 202 Accepted (id logged) to owner Gmail
+- Resume PDF serves 200; playground filters recompute KPIs (East → $468K; 2023 → 17 projects); Tableau iframe renders live; case study dialog + Maven external link OK
+
+## Implemented (2026-08-19, iteration 3 — user-requested edits)
+1. Accent color changed orange #FF4F00 → blue #1a73e8 everywhere (tailwind, CSS vars, all charts, email template)
+2. Hero KPI counters replaced with trait words: Data Enthusiast / Problem Solver / Continuous Learner
+3. Photo upload in About: camera button on portrait → POST /api/profile-photo (Emergent object storage, 8MB max, images only) → GET /api/profile-photo serves latest; her graduation photo is live (bundled fallback: /yasmin-portrait.webp)
+4. Skills dark tile now reads "Proficient in data analysis & visualization"
+5. Sales + Infra project cards link to her OneDrive workbooks ("Download workbook", also inside dialogs)
+6. New Research section (05): thesis title, description, link to JIKA journal article (journal.ipb.ac.id/jika/article/view/66577/32366); PM2.5 project card links there too
+7. Full bilingual EN/ID: i18n.js (LanguageProvider + ui dict + pick), toggle in nav (persisted in localStorage), all content fields {en,id} in content.js, headings translated incl. hero
+
+## Verified (iteration 3)
+- Accent rgb(26,115,232) live; traits render; photo upload POST + GET 200 via external URL (object storage); OneDrive links present; research card links to JIKA; ID toggle switches whole site (hero "Mengubah data mentah menjadi keputusan", nav TENTANG/KARYA/KONTAK), EN switch-back works
 
 ## Backlog
-- P0: Replace placeholder content with user's real details (content.js)
-- P1: Downloadable resume (PDF) button; admin view of contact messages; email notification on new message (Resend)
-- P2: Blog/writing section; project filtering; dark mode toggle; SEO meta + OG image
+- P0: —
+- P1: SEO meta + OG image; admin view of contact messages
+- P2: Blog/writing section; dark mode toggle; certifications section
 
 ## Next tasks
-1. Collect user's real name, projects, links → update content.js
-2. Add resume download
-3. Email notification for contact form
+1. SEO/meta + share image
+2. Contact messages admin view

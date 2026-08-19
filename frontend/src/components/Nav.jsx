@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight, Download } from "lucide-react";
 import { profile } from "@/content";
+import { useLang } from "@/i18n";
 
 export const scrollToHash = (href) => {
   if (window.__lenis) {
@@ -11,15 +12,35 @@ export const scrollToHash = (href) => {
   }
 };
 
-const links = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Work", href: "#work" },
-  { label: "Experience", href: "#experience" },
-];
+const LangToggle = ({ lang, setLang }) => (
+  <div className="flex items-center border border-line" data-testid="lang-toggle">
+    {["en", "id"].map((l) => (
+      <button
+        key={l}
+        data-testid={`lang-${l}`}
+        onClick={() => setLang(l)}
+        className={`px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.15em] transition-colors duration-300 ${
+          lang === l ? "bg-ink text-white" : "text-muted hover:text-ink"
+        }`}
+      >
+        {l}
+      </button>
+    ))}
+  </div>
+);
 
 const Nav = () => {
   const [open, setOpen] = useState(false);
+  const { lang, setLang, t } = useLang();
+
+  const links = [
+    { label: t("navAbout"), href: "#about", id: "about" },
+    { label: t("navSkills"), href: "#skills", id: "skills" },
+    { label: t("navWork"), href: "#work", id: "work" },
+    { label: t("navPlayground"), href: "#playground", id: "playground" },
+    { label: t("navResearch"), href: "#research", id: "research" },
+    { label: t("navExperience"), href: "#experience", id: "experience" },
+  ];
 
   const go = (e, href) => {
     e.preventDefault();
@@ -39,30 +60,39 @@ const Nav = () => {
           >
             {profile.initials}©
           </a>
-          <nav className="hidden md:flex items-center gap-10">
+          <nav className="hidden lg:flex items-center gap-7">
             {links.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={(e) => go(e, l.href)}
-                data-testid={`nav-link-${l.label.toLowerCase()}`}
+                data-testid={`nav-link-${l.id}`}
                 className="group relative font-mono text-[11px] uppercase tracking-[0.25em] text-ink transition-colors hover:text-accent"
               >
                 {l.label}
                 <span className="absolute -bottom-1 left-0 h-px w-0 bg-accent transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
+            <LangToggle lang={lang} setLang={setLang} />
+            <a
+              href={profile.resumeUrl}
+              download="Yasmin_Lukman_CV.pdf"
+              data-testid="nav-resume-download"
+              className="flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.25em] text-ink transition-colors hover:text-accent"
+            >
+              {t("navResume")} <Download size={13} />
+            </a>
             <a
               href="#contact"
               onClick={(e) => go(e, "#contact")}
               data-testid="nav-cta-contact"
               className="flex items-center gap-1.5 border border-ink px-5 py-2 font-mono text-[11px] uppercase tracking-[0.25em] text-ink transition-colors duration-300 hover:bg-ink hover:text-white"
             >
-              Contact <ArrowUpRight size={13} />
+              {t("navContact")} <ArrowUpRight size={13} />
             </a>
           </nav>
           <button
-            className="md:hidden text-ink"
+            className="lg:hidden text-ink"
             onClick={() => setOpen(true)}
             data-testid="nav-menu-open"
             aria-label="Open menu"
@@ -84,25 +114,39 @@ const Nav = () => {
           >
             <div className="flex h-16 items-center justify-between px-6 border-b border-line">
               <span className="font-mono text-sm font-bold tracking-[0.2em]">{profile.initials}©</span>
-              <button onClick={() => setOpen(false)} data-testid="nav-menu-close" aria-label="Close menu">
-                <X size={22} />
-              </button>
+              <div className="flex items-center gap-4">
+                <LangToggle lang={lang} setLang={setLang} />
+                <button onClick={() => setOpen(false)} data-testid="nav-menu-close" aria-label="Close menu">
+                  <X size={22} />
+                </button>
+              </div>
             </div>
-            <nav className="flex flex-1 flex-col justify-center gap-2 px-8">
-              {[...links, { label: "Contact", href: "#contact" }].map((l, i) => (
+            <nav className="flex flex-1 flex-col justify-center gap-2 px-8 overflow-y-auto">
+              {[...links, { label: t("navContact"), href: "#contact", id: "contact" }].map((l, i) => (
                 <motion.a
                   key={l.href}
                   href={l.href}
                   onClick={(e) => go(e, l.href)}
-                  data-testid={`nav-mobile-link-${l.label.toLowerCase()}`}
-                  className="font-display text-5xl text-ink py-3 border-b border-line hover:text-accent transition-colors"
+                  data-testid={`nav-mobile-link-${l.id}`}
+                  className="font-display text-4xl sm:text-5xl text-ink py-2.5 border-b border-line hover:text-accent transition-colors"
                   initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 + i * 0.07, duration: 0.5 }}
+                  transition={{ delay: 0.08 + i * 0.06, duration: 0.5 }}
                 >
                   {l.label}
                 </motion.a>
               ))}
+              <motion.a
+                href={profile.resumeUrl}
+                download="Yasmin_Lukman_CV.pdf"
+                data-testid="nav-mobile-resume"
+                className="mt-6 inline-flex w-fit items-center gap-2 border border-ink px-6 py-3 font-mono text-[11px] uppercase tracking-[0.25em] text-ink"
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.5 }}
+              >
+                {t("navResumeMobile")} <Download size={14} />
+              </motion.a>
             </nav>
           </motion.div>
         )}

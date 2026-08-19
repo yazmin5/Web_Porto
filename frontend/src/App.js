@@ -9,6 +9,8 @@ import EditorialMarquee from "@/components/Marquee";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
+import Playground from "@/components/Playground";
+import Research from "@/components/Research";
 import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -41,6 +43,8 @@ function App() {
           <About />
           <Skills />
           <Projects />
+          <Playground />
+          <Research />
           <EditorialMarquee inverted />
           <Experience />
           <Contact />
