@@ -1,15 +1,11 @@
 [build]
-  command = "cd frontend && npm install && npm run build"
+  command = "cd frontend && rm -rf node_modules package-lock.json && npm install && npm run build"
   publish = "frontend/build"
+
+[build.environment]
+  NODE_VERSION = "18"
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-# Handle API calls if you have backend
-[[redirects]]
-  from = "/api/*"
-  to = "https://your-backend-url.com/api/:splat"
-  status = 200
-  force = true
